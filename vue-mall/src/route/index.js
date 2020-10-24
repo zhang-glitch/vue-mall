@@ -13,17 +13,17 @@ const routes = [
     // redirect: '/index',
     children: [
       {
-        path: '/index',
+        path: 'index',
         name: "index",
         component: Index
       },
       {
-        path: '/product/:id',
+        path: 'product/:id',
         name: "product",
         component: () => import("../pages/product")
       },
       {
-        path: '/detail/:id',
+        path: 'detail/:id',
         name: "detail",
         component: () => import("../pages/detail")
       },
@@ -40,21 +40,36 @@ const routes = [
     component: () => import("../pages/order"),
     children: [
       {
-        path: '/confirm',
+        path: 'confirm',
         name: 'confirm',
         component: () => import("../pages/orderConfirm")
       },
       {
-        path: '/pay',
+        path: 'pay',
         name: 'pay',
         component: () => import("../pages/orderPay")
       },
       {
-        path: '/list',
+        path: 'list',
         name: 'list',
         component: () => import("../pages/orderList")
       },
-    ]
+      {
+        path: 'alipay',
+        name: 'alipay',
+        component: () => import("../pages/alipay")
+      },
+    ],
+  },
+  {
+    path: '/login',
+    name: 'login',
+    component: () => import("../pages/login")
+  },
+  {
+    path: '/register',
+    name: 'register',
+    component: () => import("../pages/register")
   },
 ]
 
