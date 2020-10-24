@@ -1,26 +1,29 @@
 <template>
   <div id="app">
-    {{message}}
+    <!-- {{message}} -->
+    <!-- <Home /> -->
   </div>
 </template>
 
 <script>
 import axios from 'axios'
+// import Home from './pages/home'
 export default {
   name: 'App',
   data() {
     return {
-      message: ""
+      // message: ""
     }
   },
-  created() {
-    axios.get("/").then(res => {
-      // console.log(res)
-      this.message = res.data
-    })
-  },
+  // created() {
+  //   axios.get("/").then(res => {
+  //     // console.log(res)
+  //     this.message = res.data
+  //   })
+  // },
 
   components: {
+    // Home
   }
 }
 </script>
