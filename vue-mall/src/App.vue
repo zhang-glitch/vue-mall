@@ -15,6 +15,7 @@ export default {
   data() {
     return {
       // message: ""
+      data: {}
     }
   },
   // created() {
@@ -24,6 +25,18 @@ export default {
   //   })
   // },
 
+  created() {
+    // 本地mock
+    this.axios.get("/mock/user/login.json").then(res => {
+      console.log(res)
+    })
+
+    // mockjs
+    // this.axios.get("/user/login").then(res => {
+    //   console.log(res)
+    //   this.data = res
+    // })
+  },
   components: {
     // Home
   }

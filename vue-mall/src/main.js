@@ -7,14 +7,21 @@ import router from './route/index'
 
 //将axios挂载到vue实例上，以后通过this.axios发送请求。
 Vue.use(VueAxios, axios)
+// 加载mockjs
+// const mock = true;
+// if (mock) {
+//   require("./mock/api")
+// }
+
 // 请求处理
-axios.defaults.baseURL = "/api"
+// axios.defaults.baseURL = "/api"
 axios.defaults.timeout = 8000
 axios.interceptors.response.use((response) => {
-  let status = response.status
+  // console.log(response)
   let res = response.data
+  let status = res.status
   if (status === 0) {
-    return res.date
+    return res.data
   } else if (status === 10) {
     // 未登录跳转到登录页面
     window.location.href = "/login";
