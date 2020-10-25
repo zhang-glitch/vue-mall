@@ -10,20 +10,20 @@ const routes = [
     path: '/',
     name: 'home',
     component: Home,
-    // redirect: '/index',
+    redirect: '/index',
     children: [
       {
-        path: 'index',
+        path: '/index',
         name: "index",
         component: Index
       },
       {
-        path: 'product/:id',
+        path: '/product/:id',
         name: "product",
         component: () => import("../pages/product")
       },
       {
-        path: 'detail/:id',
+        path: '/detail/:id',
         name: "detail",
         component: () => import("../pages/detail")
       },

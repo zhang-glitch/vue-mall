@@ -2,6 +2,8 @@
   <div id="app">
     <!-- {{message}} -->
     <!-- <Home /> -->
+    
+    <router-view></router-view>
   </div>
 </template>
 
