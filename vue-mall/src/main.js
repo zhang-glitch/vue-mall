@@ -14,7 +14,7 @@ Vue.use(VueAxios, axios)
 // }
 
 // 请求处理
-// axios.defaults.baseURL = "/api"
+axios.defaults.baseURL = "/api"
 axios.defaults.timeout = 8000
 axios.interceptors.response.use((response) => {
   // console.log(response)
