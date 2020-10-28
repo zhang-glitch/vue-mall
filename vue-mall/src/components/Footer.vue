@@ -1,12 +1,14 @@
 <template>
   <div class="footer">
       <div class="top-footer">
-        <ul>
-          <li>预约维修服务</li>
-          <li>7天无理由退货</li>
-          <li>15天免费换货</li>
-          <li>满150元包邮</li>
-        </ul>
+        <div class="container">
+          <ul>
+            <li>预约维修服务</li>
+            <li>7天无理由退货</li>
+            <li>15天免费换货</li>
+            <li>满150元包邮</li>
+          </ul>
+        </div>
       </div>
       <div class="bottom-footer">
         <div class="footer-logo">
@@ -44,10 +46,14 @@ export default {
    right: 0px;
    color: #999999;
     .top-footer ul{
-      @include flex(space-evenly);
+      @include flex(space-between);
       height: 100px;
       background:#ffffff;
       font-size: 20px;
+      li {
+        width: 18.9%;
+        border-right: 1px solid #e5e5e5;
+      }
       li:nth-child(1) {
         &:before {
           content: "";
@@ -76,12 +82,13 @@ export default {
         }
       }
       li:nth-child(4) {
+        border-right: none;
         &:before {
           content: "";
           @include bgImg(20px, 20px, "/imgs/icon-post.png");
           margin-right: 5px;
           margin-top: -3px;
-        vertical-align: middle;
+          vertical-align: middle;
         }
       }
   }
