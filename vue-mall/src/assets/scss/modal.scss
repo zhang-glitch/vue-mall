@@ -2,12 +2,12 @@
   z-index: 99;
   @include wh(100%, 100%);
   @include position(fixed);
-  transition: all .5s;
+  transition: all 0.5s;
   .mask {
     @include wh(100%, 100%);
     @include position(fixed);
     background-color: $colorI;
-    opacity: .5;
+    opacity: 0.5;
   }
 
   &.slide-enter-active {
@@ -31,10 +31,19 @@
       background-color: $colorJ;
       font-size: $fontI;
       padding: 0 25px;
-
+      span {
+        font-weight: bold;
+      }
       .icon-close {
-        @include positionImg(absolute, 23px, 25px, 14px, 14px, '/imgs/icon-close.png');
-        transition: all .5s;
+        @include positionImg(
+          absolute,
+          23px,
+          25px,
+          14px,
+          14px,
+          "/imgs/icon-close.png"
+        );
+        transition: all 0.5s;
         &:hover {
           transform: scale(1.5);
         }

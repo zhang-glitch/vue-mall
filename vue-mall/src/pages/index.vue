@@ -92,13 +92,26 @@
                   <div class="item-info">
                     <h3 class="product-name">{{element.name}}</h3>
                     <p>{{element.subtitle}}</p>
-                    <p class="price" @click="skipCart">{{element.price}}元</p>
+                    <p class="price" @click="openModal(element.id)">{{element.price}}元</p>
                   </div>
                 </li>
               </ul>
             </div>
           </div>
         </div>
+        <Modal 
+          modalType="middle" 
+          modalTitle="提示"
+          btnType="2"
+          :sureTitle="sureTitle"
+          :showModal="isModal"
+          @closeModal="closeModal"
+          @skipCart="skipCart"
+        >
+          <template #body>
+            <div>商品添加成功！</div>
+          </template>
+        </Modal>
       </div>
   </div>
 </template>
@@ -106,14 +119,18 @@
 <script>
 import { Swiper, SwiperSlide } from 'vue-awesome-swiper'
 import 'swiper/swiper-bundle.css'
+import Modal from '../components/Modal'
 export default {
   name: 'index',
   components: {
     Swiper,
-    SwiperSlide
+    SwiperSlide,
+    Modal
   },
   data() {
     return {
+      sureTitle: "查看购物车",
+      isModal: false,
       swiperOption: {
         // 自动播放
         autoplay: true,
@@ -244,8 +261,25 @@ export default {
         this.phoneList = [res.list.slice(0, 4), res.list.slice(4, 8)];
       })
     },
-    skipCart() {
-      this.$router.push("cart")
+    openModal(id) {
+      // this.$router.push("cart")
+      // this.axios({
+      //   url: "/carts",
+      //   data: {
+      //     productId: id,
+      //     selected: true
+      //   }
+      // })
+      this.isModal = true;
+    },
+    closeModal() {
+      this.isModal = false
+    },
+    skipCart(val) {
+      if(val === this.sureTitle) {
+        this.$router.push("/cart")
+      }
+      this.isModal = false
     }
   }
 }
