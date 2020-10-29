@@ -93,7 +93,7 @@ export default {
           pageSize: 6
         }
       }).then(res => {
-        console.log(res)
+        // console.log(res)
         this.phoneList = res.list
       })
     }

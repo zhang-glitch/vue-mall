@@ -40,10 +40,10 @@ export default {
   @import "../assets/scss/mixin.scss";
 
  .footer {
-   position: fixed;
-   bottom: 0px;
-   left: 0px;
-   right: 0px;
+  //  position: fixed;
+  //  bottom: 0px;
+  //  left: 0px;
+  //  right: 0px;
    color: #999999;
     .top-footer ul{
       @include flex(space-between);
