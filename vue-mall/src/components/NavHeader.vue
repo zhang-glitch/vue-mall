@@ -30,7 +30,7 @@
                 <li class="product" v-for="item in phoneList" :key="item.id">
                   <a class="product-wrapper" :href="`/product/${item.id}`" target="_blank">
                     <div class="pro-img">
-                      <img :src="item.mainImage" alt="">
+                      <img v-lazy="item.mainImage" alt="">
                     </div>
                     <div class="pro-name">
                       {{item.name}}

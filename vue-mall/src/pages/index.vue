@@ -49,7 +49,7 @@
         </div>
         <Swiper :options="swiperOption">
           <SwiperSlide v-for="item in slideList" :key="item.id">
-            <a :href="`/product/${item.id}`"><img :src="item.img" alt=""></a>
+            <a :href="`/product/${item.id}`"><img v-lazy="item.img" alt=""></a>
           </SwiperSlide>
           <!-- 分页器 -->
           <div class="swiper-pagination" slot="pagination"></div>
@@ -62,14 +62,14 @@
         <ul>
           <li v-for="item in adsList" :key="item.id">
             <a :href="`/product/${item.id}`">
-              <img :src="item.img" alt="">
+              <img v-lazy="item.img" alt="">
             </a>
           </li>
         </ul>
       </div>
       <div class="banner">
         <a href="/product/30">
-          <img src="/imgs/banner-1.png" alt="">
+          <img v-lazy="'/imgs/banner-1.png'" alt="">
         </a>
       </div>
     </div>
@@ -79,7 +79,7 @@
           <div class="wrapper">
             <div class="banner-left">
               <a href="/product/35">
-                <img src="/imgs/mix-alpha.jpg" alt="">
+                <img v-lazy="'/imgs/mix-alpha.jpg'" alt="">
               </a>
             </div>
             <div class="list-box">
@@ -87,7 +87,7 @@
                 <li v-for="element in item" :key="element.id">
                   <span class="new-pro skill-pro">新品</span>
                   <div class="item-img">
-                    <img :src="element.mainImage" alt="">
+                    <img v-lazy="element.mainImage" alt="">
                   </div>
                   <div class="item-info">
                     <h3 class="product-name">{{element.name}}</h3>
@@ -102,7 +102,7 @@
         <Modal 
           modalType="middle" 
           modalTitle="提示"
-          btnType="2"
+          btnType="1"
           :sureTitle="sureTitle"
           :showModal="isModal"
           @closeModal="closeModal"

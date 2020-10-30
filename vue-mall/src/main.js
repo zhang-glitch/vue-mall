@@ -2,6 +2,8 @@ import Vue from 'vue'
 import App from './App.vue'
 import axios from 'axios'
 import VueAxios from 'vue-axios'
+import VueLazyLoad from 'vue-lazyload'
+import VueCookie from 'vue-cookie'
 import router from './route/index'
 
 
@@ -30,6 +32,11 @@ axios.interceptors.response.use((response) => {
   }
 })
 Vue.config.productionTip = false
+Vue.use(VueLazyLoad, {
+  loading: "/imgs/loading-svg/loading-bars.svg"
+})
+
+Vue.use(VueCookie)
 
 new Vue({
   render: h => h(App),

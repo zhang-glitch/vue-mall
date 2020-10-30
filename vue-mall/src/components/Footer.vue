@@ -1,6 +1,6 @@
 <template>
   <div class="footer">
-      <div class="top-footer">
+      <div class="top-footer" v-if="isShow">
         <div class="container">
           <ul>
             <li>预约维修服务</li>
@@ -30,7 +30,13 @@
 
 <script>
 export default {
-  name: 'Footer'
+  name: 'Footer',
+  props: {
+    isShow: {
+      type: Boolean,
+      default: true
+    }
+  }
 }
 </script>
 
