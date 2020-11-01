@@ -4,7 +4,8 @@ import axios from 'axios'
 import VueAxios from 'vue-axios'
 import VueLazyLoad from 'vue-lazyload'
 import VueCookie from 'vue-cookie'
-import router from './route/index'
+import router from './route'
+import store from './store'
 
 
 //将axios挂载到vue实例上，以后通过this.axios发送请求。
@@ -22,11 +23,14 @@ axios.interceptors.response.use((response) => {
   // console.log(response)
   let res = response.data
   let status = res.status
+  let path = response.pathname
   if (status === 0) {
     return res.data
   } else if (status === 10) {
     // 未登录跳转到登录页面
-    window.location.href = "/login";
+    // if (path != "/index") {
+    // window.location.href = "/login";
+    // }
   } else {
     return res.msg
   }
@@ -40,5 +44,6 @@ Vue.use(VueCookie)
 
 new Vue({
   render: h => h(App),
-  router
+  router,
+  store
 }).$mount('#app')

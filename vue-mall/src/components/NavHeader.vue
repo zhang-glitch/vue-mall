@@ -11,9 +11,9 @@
         <div class="user">
           <a href="javascript:;" v-if="username">{{username}}</a>
           <a href="javascript:;" v-else @click="skipLogin">请登录</a>
-          <a href="javascript:;" v-if="username">退出</a>
+          <a href="javascript:;" v-if="username" @click="exit">退出</a>
           <a href="javascript:;" v-if="username">我的订单</a>
-          <a href="javascript:;" class="my-cart" @click="skipCart"><span class="icon-cart"></span> 购物车</a>
+          <a href="javascript:;" class="my-cart" @click="skipCart"><span class="icon-cart"></span> 购物车({{cartCount}})</a>
         </div>
       </div>
     </div>
@@ -67,7 +67,6 @@ export default {
   name:'NavHeader',
   data() {
     return {
-      username: '',
       phoneList: []
     }
   },
@@ -96,12 +95,27 @@ export default {
         // console.log(res)
         this.phoneList = res.list
       })
+    },
+    // 退出登录
+    exit() {
+      this.username = ""
+      this.$store.dispatch("deleteUserName", "")
+      this.$router.push('login')
     }
   },
   filters: {
     filterPrice(val) {
       if (!val) return '0.00';
       return `￥${val.toFixed(2)}元`;
+    }
+  },
+  //防止请求延迟带来的数据未获取
+  computed:{
+    username() {
+      return this.$store.state.username
+    },
+    cartCount() {
+      return this.$store.state.cartCount
     }
   }
 }

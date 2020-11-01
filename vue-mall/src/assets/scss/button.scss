@@ -4,7 +4,7 @@
   line-height: 30px;
   text-align: center;
   background-color: $colorA;
-  color: $colorG;
+  color: $colorG !important;
   border: none;
   cursor: pointer;
 }
@@ -28,9 +28,9 @@
 .btn-group {
   @include wh(100%, auto);
   margin: 0 auto;
-  .btn{
+  .btn {
     margin-right: 20px;
-    &:last-child{
+    &:last-child {
       margin-right: 0;
     }
   }
