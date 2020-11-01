@@ -62,7 +62,7 @@ export default {
         this.$cookie.set('userId', res.id, {expires: '1M'});
         // 保存用户信息到vuex
         this.$store.dispatch("saveUserName", res.username)
-        this.$router.push("index")
+        this.$router.push("/index")
       })
     },
     register() {

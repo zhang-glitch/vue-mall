@@ -23,16 +23,17 @@ axios.interceptors.response.use((response) => {
   // console.log(response)
   let res = response.data
   let status = res.status
-  let path = response.pathname
+  let path = location.pathname
   if (status === 0) {
     return res.data
   } else if (status === 10) {
     // 未登录跳转到登录页面
-    // if (path != "/index") {
-    // window.location.href = "/login";
-    // }
+    if (path != "/index") {
+      window.location.href = "/login";
+    }
+    return Promise.reject(res);
   } else {
-    return res.msg
+    return Promise.reject(res);
   }
 })
 Vue.config.productionTip = false

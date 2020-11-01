@@ -100,7 +100,7 @@ export default {
     exit() {
       this.username = ""
       this.$store.dispatch("deleteUserName", "")
-      this.$router.push('login')
+      this.$router.push('/login')
     }
   },
   filters: {

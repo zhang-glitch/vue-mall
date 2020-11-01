@@ -262,14 +262,17 @@ export default {
       })
     },
     openModal(id) {
-      // this.$router.push("cart")
-      // this.axios({
-      //   url: "/carts",
-      //   data: {
-      //     productId: id,
-      //     selected: true
-      //   }
-      // })
+      this.axios({
+        url: "/carts",
+        method: "post",
+        data: {
+          productId: id,
+          selected: true
+        }
+      }).then(res => {
+        // console.log(res)
+        this.$store.dispatch('saveCartCount', res.cartTotalQuantity);
+      })
       this.isModal = true;
     },
     closeModal() {

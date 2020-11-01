@@ -3,7 +3,7 @@
     <div class="container">
      <div class="nav-bar">
         <div class="phone-name">
-          {{name}}
+          {{productName}}
         </div>
         <div class="product-menu">
           <a href="javascript:;">概述</a><span>|</span>
@@ -19,7 +19,12 @@
 <script>
 export default {
   name:'ProductParams',
-  props: ["name"]
+  // props: ["name"]
+  computed: {
+    productName() {
+      return this.$store.state.productName
+    },
+  }
 }
 </script>
 
@@ -37,8 +42,14 @@ export default {
         .product-menu {
           font-size: $fontJ;
           a {
-            margin: 0 10px;
+            // margin: 0 10px;
             color: #666;
+          }
+          span {
+            margin:0 10px;
+          }
+          .buy {
+            margin-left: 10px;
           }
         }
         .phone-name {

@@ -1,8 +1,8 @@
 <template>
   <div class="product">
-    <ProductPramas :class="{'is-fixed': setIsFixed}" :name="product.name">
+    <ProductPramas :class="{'is-fixed': setIsFixed}" >
       <template #buy>
-        <a href="javascript:;" class="btn" @click="buy">立即购买</a>
+        <a href="javascript:;" class="btn buy" @click="buy">立即购买</a>
       </template>
     </ProductPramas>
     <!-- <div class="container"> -->
@@ -127,6 +127,8 @@ export default {
       this.axios.get(`products/${id}`)
         .then((res) => {
           this.product = res;
+          // 将产品名称保存到vuex中
+          this.$store.dispatch("saveProductName", res.name)
         })
     },
 
@@ -149,7 +151,6 @@ export default {
 </script>
 
 <style lang="scss">
-
   @import "../assets/scss/config.scss";
   @import "../assets/scss/mixin.scss";
   .product {

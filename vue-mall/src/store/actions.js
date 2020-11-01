@@ -8,5 +8,8 @@ export default {
   },
   saveCartCount(context, cartCount) {
     context.commit("saveCartCount", cartCount)
-  }
+  },
+  saveProductName(context, productName) {
+    context.commit("saveProductName", productName)
+  },
 }
