@@ -92,7 +92,7 @@
                   <div class="item-info">
                     <h3 class="product-name">{{element.name}}</h3>
                     <p>{{element.subtitle}}</p>
-                    <p class="price" @click="openModal(element.id)">{{element.price}}元</p>
+                    <p class="price" @click="addCart(element.id)">{{element.price}}元</p>
                   </div>
                 </li>
               </ul>
@@ -261,7 +261,7 @@ export default {
         this.phoneList = [res.list.slice(0, 4), res.list.slice(4, 8)];
       })
     },
-    openModal(id) {
+    addCart(id) {
       this.axios({
         url: "/carts",
         method: "post",

@@ -25,12 +25,14 @@ export default {
     // 获取用户信息
     getUser() {
       this.axios.get('/user').then((res = {}) => {
+        // 保存到vuex中
         this.$store.dispatch('saveUserName', res.username);
       })
     },
     // 获取购物车信息
     getCartCount() {
       this.axios.get('/carts/products/sum').then((res) => {
+        // 保存到vuex中
         this.$store.dispatch('saveCartCount', res);
       })
     }
