@@ -4,7 +4,7 @@
       <div class="mask"></div>
       <div class="modal-dialog">
         <div class="modal-header">
-          <span>标题</span>
+          <span>{{modalTitle}}</span>
           <a href="javascript:;" class="icon-close" @click="closeModal"></a>
         </div>
         <div class="modal-body">
