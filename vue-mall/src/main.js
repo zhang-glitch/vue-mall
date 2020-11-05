@@ -6,6 +6,7 @@ import VueLazyLoad from 'vue-lazyload'
 import VueCookie from 'vue-cookie'
 import router from './route'
 import store from './store'
+import './elementUI'
 
 
 //将axios挂载到vue实例上，以后通过this.axios发送请求。

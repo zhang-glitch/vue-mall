@@ -63,6 +63,12 @@ export default {
         // 保存用户信息到vuex
         this.$store.dispatch("saveUserName", res.username)
         this.$router.push("/index")
+        this.$message({
+          message: '登陆成功',
+          type: 'success'
+        })
+      }).catch(res => {
+         this.$message.error(res.msg);
       })
     },
   }

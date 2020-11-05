@@ -50,8 +50,7 @@ export default {
         password,
         email: `${username}@163.com`
       }).then(() => {
-        // this.$message.success('注册成功');
-        alert("注册成功")
+        this.$message.success('注册成功');
         // window.location.href = '/login';
         this.$router.push("/login")
         // 清空输入框
@@ -60,7 +59,7 @@ export default {
       }).catch((res) => {
         // console.log(res)
         if(res.status === 1) {
-          alert(res.msg)
+          this.$message.error(res.msg);
         }
         
         // 清空输入框

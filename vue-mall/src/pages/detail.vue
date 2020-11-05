@@ -141,6 +141,9 @@ export default {
         // console.log(res)
         this.$store.dispatch('saveCartCount', res.cartTotalQuantity);
         this.isModal = true;
+        this.$message.success("添加商品成功")
+      }).catch(() => {
+        this.$message.error("添加商品失败")
       })
     },
     closeModal() {

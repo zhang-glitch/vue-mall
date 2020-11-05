@@ -85,14 +85,14 @@ export default {
     // 增加数量
     addSum(item) {
       item.quantity += 1;
-      // item.productTotalPrice = item.quantity * item.productPrice;
+      item.productTotalPrice = item.quantity * item.productPrice;
       // 更新数据
       this.updateProduct(item)
     },
     subSum(item) {
       if(item.quantity >= 2) {
         item.quantity -= 1;
-        // item.productTotalPrice = item.quantity * item.productPrice;
+        item.productTotalPrice = item.quantity * item.productPrice;
       }
       // 更新数据
       this.updateProduct(item)
@@ -158,6 +158,9 @@ export default {
         this.selectedAll = res.selectedAll
         this.cartTotalPrice = res.cartTotalPrice
         this.checkedNum = res.cartProductVoList.filter(item => item.productSelected).length;
+        this.$message.success("商品删除成功")
+      }).catch(() => {
+        this.$message.error("商品删除失败")
       })
     },
 
@@ -179,7 +182,11 @@ export default {
     skipOrderConfirm() {
       let flag = this.cartList.some(item => item.productSelected);
       if (!flag) {
-        alert("请选择一件商品")
+        this.$message({
+          message: "请选择一件商品",
+          type: 'warning'
+        });
+        return;
       }
       this.$router.push("/order/confirm")
     }

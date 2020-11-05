@@ -248,6 +248,7 @@ export default {
     this.getPhoneList()
   },
   methods: {
+    // 获取手机列表
     getPhoneList() {
       this.axios({
         url: "/products",
@@ -261,6 +262,7 @@ export default {
         this.phoneList = [res.list.slice(0, 4), res.list.slice(4, 8)];
       })
     },
+    // 添加商品到购物车
     addCart(id) {
       this.axios({
         url: "/carts",
@@ -272,6 +274,9 @@ export default {
       }).then(res => {
         // console.log(res)
         this.$store.dispatch('saveCartCount', res.cartTotalQuantity);
+        this.$message.success("添加商品成功")
+      }).catch(() => {
+        this.$message.error("添加商品失败")
       })
       this.isModal = true;
     },

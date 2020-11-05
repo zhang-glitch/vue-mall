@@ -235,7 +235,7 @@ export default {
     getAddressList() {
       this.axios.get("/shippings").then(res => {
         this.addList = res.list;
-        console.log(res)
+        // console.log(res)
       });
     },
     // 获取结算商品
@@ -245,7 +245,7 @@ export default {
         this.cartList = res.cartProductVoList.filter(
           item => item.productSelected
         );
-        console.log(this.cartList)
+        // console.log(this.cartList)
         this.count = this.cartList.reduce((accumulator, item) => {
           return accumulator + item.quantity;
         }, 0);
@@ -323,8 +323,7 @@ export default {
           errMsg = "请输入六位邮编";
         }
         if (errMsg) {
-          // this.$message.error(errMsg);
-          alert(errMsg)
+          this.$message.error(errMsg);
           return;
         }
       }
@@ -332,8 +331,7 @@ export default {
       this.axios[method](url, params).then(() => {
         this.closeModal();
         this.getAddressList();
-        // this.$message.success('操作成功');
-        alert("操作成功");
+        this.$message.success('操作成功');
       });
     },
     // 获取索引值
@@ -344,8 +342,7 @@ export default {
     orderSubmit() {
       let item = this.addList[this.selectedIndex];
       if (!item) {
-        // this.$message.error('请选择收货地址!');
-        alert('请选择收货地址!')
+        this.$message.error('请选择收货地址!');
         return;
       }
       this.axios.post('/orders', {
