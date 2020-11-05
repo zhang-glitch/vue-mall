@@ -28,7 +28,7 @@ axios.interceptors.response.use((response) => {
     return res.data
   } else if (status === 10) {
     // 未登录跳转到登录页面
-    if (path != "/index") {
+    if (path != "/index" || "/register") {
       window.location.href = "/login";
     }
     return Promise.reject(res);

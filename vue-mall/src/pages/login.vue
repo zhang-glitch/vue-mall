@@ -18,10 +18,10 @@
             <input type="password" placeholder="请输入密码" v-model="password">
           </div>
           <div class="btn" @click="judgeLogin">
-            <a href="">登录</a>
+            <a href="javascript:;">登录</a>
           </div>
-          <div class="tips" @click="register">
-            <a href="javascript:;">
+          <div class="tips">
+            <a href="/register">
               手机短信登录/注册
             </a>
           </div>
@@ -65,20 +65,6 @@ export default {
         this.$router.push("/index")
       })
     },
-    register() {
-      this.axios({
-        url: "/user/register",
-        method: "post",
-        data: {
-          username: 'jszhen',
-          password: "jszhen",
-          email: 'jszhen@163.com'
-        }
-      }).then(res => {
-        // console.log("res", res)
-        alert("注册成功")
-      })
-    }
   }
 }
 </script>
