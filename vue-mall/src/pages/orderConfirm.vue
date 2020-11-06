@@ -356,6 +356,9 @@ export default {
             }
           })
         })
+        .catch(res => {
+          this.$message.error(res.msg)
+        })
     }
   },
 }

@@ -56,15 +56,19 @@
         </div>
       </div>
     </div>
+    <ScanPayCode v-show="isShowCode"/>
   </div>
 </template>
 
 <script>
 import OrderHeader from '../components/OrderHeader'
+import ScanPayCode from '../components/ScanPayCode'
+// import QRCode from 'qrcode'
 export default {
   name: 'orderPay',
   components: {
-    OrderHeader
+    OrderHeader,
+    ScanPayCode
   },
   data() {
     return {
@@ -80,7 +84,9 @@ export default {
       // 总价格
       totoalPrice: 0,
       // 支付方式的索引。 1: 支付宝，2: 微信
-      currentIndex: 1
+      currentIndex: 1,
+      // 展示微信支付的二维码
+      isShowCode: false
     }
   },
   created() {
@@ -105,6 +111,29 @@ export default {
     // 改变索引
     skipPay(index) {
       this.currentIndex = index
+      if(index === 1) {
+        // 支付宝支付
+        window.open(`/order/alipay?orderId=${this.orderId}`, "_blank")
+      }else {
+        // 微信支付
+        //  this.axios.post('/pay', {
+        //   orderId: this.orderId,
+        //   orderName: 'Vue高仿小米商城',
+        //   amount: 0.01,
+        //   // 微信支付
+        //   payType: 2
+        // }).then(res => {
+        //   // 将路径转化为base64的字符串图片
+        //   QRCode.toDataURL(res.content).then(url => {
+        //     this.payImg = url;
+        //   }).catch(err => {
+        //     this.$message.error('操作频繁, 请稍后重试!');
+        //   })
+        // })
+
+        this.isShowCode = true;
+        console.log("222")
+      }
     }
   },
   computed: {
