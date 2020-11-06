@@ -14,7 +14,7 @@
           <!-- <a href="javascript:;" class="btn" v-if="btnType === '1' || btnType === '2'" :class="{'all-btn': btnType === '2'}" @click="skipCart">{{sureTitle}}</a>
           <a href="javascript:;" class="btn btn-cacel" v-if="btnType === '0' || btnType === '2'" @click="closeModal">{{cacelTitle}}</a> -->
           <div class="btn-group">
-            <a href="javascript:;" class="btn" v-if="btnType === '1' || btnType === '2'" @click="skipCart">{{sureTitle}}</a>
+            <a href="javascript:;" class="btn" v-if="btnType === '1' || btnType === '2'" @click="skipCart" >{{sureTitle}}</a>
             <a href="javascript:;" class="btn btn-default" v-if="btnType === '0' || btnType === '2'" @click="closeModal">{{cacelTitle}}</a> 
           </div>
         </div>
@@ -57,7 +57,7 @@ export default {
   },
   methods: {
     closeModal() {
-      this.$emit("closeModal")
+      this.$emit("closeModal", this.cacelTitle)
     },
     skipCart() {
       this.$emit("skipCart", this.sureTitle)

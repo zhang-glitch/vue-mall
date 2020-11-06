@@ -19,6 +19,20 @@
         </Modal>
       </div>
     </div>
+    <Modal
+      modalType="middle"
+      modalTitle="支付确认"
+      :sureTitle="sureTitle"
+      :cacelTitle="cacelTitle"
+      btnType="2"
+      @closeModal="closeModal"
+      v-show="isShow"
+      @skipCart="skipOrderList"
+    >
+      <template #body>
+        <div>您确认是否完成支付？</div>
+      </template>
+    </Modal>
   </div>
 </template>
 
@@ -31,12 +45,29 @@ export default {
   },
   data() {
     return {
-      isModal: true
+      isModal: true,
+      sureTitle: "查看订单",
+      // 控制确认订单的会话框
+      isShow: false,
+      cacelTitle: '取消支付'
     }
   },
   methods: {
-    closeModal() {
+    closeModal(title) {
+      // 支付框关闭
       this.isModal = false;
+      // 确认框打开
+      this.isShow = true;
+      // 当取消订单的时候，设置确认会话框关闭
+      if(title === this.cacelTitle) {
+        this.isShow = false;
+      }
+    },
+    // 跳转到订单列表
+    skipOrderList(title) {
+      if(title === this.sureTitle) {
+        this.$router.push("/order/list")
+      }
     }
   }
 }

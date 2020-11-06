@@ -132,7 +132,6 @@ export default {
         // })
 
         this.isShowCode = true;
-        console.log("222")
       }
     }
   },
