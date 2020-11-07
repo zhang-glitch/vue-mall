@@ -36,7 +36,7 @@
                     <p class="price-sum">2699 X 3</p>
                   </div>
                 </div>
-                <div class="right fr">未支付</div>
+                <div class="right fr"><a href="javascript:;" @click="gotoPay(element.orderNo)">未支付</a></div>
               </li>
             </ul>
           </div>
@@ -88,6 +88,15 @@ export default {
         }).catch(() => {
           this.loading = false
         })
+    },
+     // 支付订单
+    gotoPay(orderNo) {
+      this.$router.push({
+        path: '/order/pay',
+        query: {
+          orderNo
+        }
+      })
     },
     // 改变当前页
     handleChange(page) {
@@ -154,7 +163,9 @@ export default {
                 }
                 .right {
                   margin-top: 38px;
-                  color: $colorA;
+                  a {
+                    color: $colorA;
+                  }
                 }
               }
             }
