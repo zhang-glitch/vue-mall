@@ -24,13 +24,14 @@ axios.interceptors.response.use((response) => {
   // console.log(response)
   let res = response.data
   let status = res.status
-  let path = location.pathname
+  const path = location.pathname
   if (status === 0) {
     return res.data
   } else if (status === 10) {
     // 未登录跳转到登录页面
-    if (path != "/index" || "/register") {
+    if (path !== "/index" || "/register" || "/login") {
       // window.location.href = "/login";
+      // location.assign("/login")
     }
     return Promise.reject(res);
   } else {
